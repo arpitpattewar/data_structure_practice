@@ -1,9 +1,17 @@
 #python2
+#
+#link  :  http://interactivepython.org/runestone/static/pythonds/BasicDS/ImplementinganUnorderedListLinkedLists.html
+#
+#link  :  https://www.codefellows.org/blog/implementing-a-singly-linked-list-in-python/
+#
+
+
 import sys
 
+
 class node:
-   def __init__(self,data=None):
-    self.data=None
+   def __init__(self, data=None):
+    self.data=data
     self.next=None
 
 
@@ -13,20 +21,24 @@ class linkedlist:
        self.head=node(data)
        self.head.next=None
        
-     def addnode(self,data):
+     def addnode(self, data):
        if self.isempty() : self.head=node(data)   
        else: 
            head = self.head
            while head:
                if head.next : head = head.next
-               else : head.next=node(data);break
+               else :
+                   print "adding {}".format(data) 
+                   head.next=node(data)
+                   break
          
      def display(self):
        head = self.head
        if  not self.isempty():
            while head :
                print head.data
-               head=head.next
+               if  head.next : head = head.next
+               else: break
        else: print "Empty linkedlist"
                    
          
@@ -48,8 +60,8 @@ class linkedlist:
          pass
      
      def isempty(self):
-         if not self.head : return True
-         else : return False
+         return  self.head == None
+
      
      def pop(self):
         head = self.head
@@ -64,25 +76,63 @@ class linkedlist:
                 else: self.head=None
                 return head.data 
                 break
+            
+            
+     
+     def reverse(self):
+
+         cur= self.head
+         prev=None
+         next_node=cur.next
+         while cur:
+             print "Cur is  {}".format(cur.data)
+             try:
+                 print "Prev is  {}".format(prev.data)
+             except: pass    
+             cur.next = prev
+             prev=cur            
+             cur = next_node
+             if cur.next:
+                next_node = cur.next
+             else:
+                 self.head = cur
+                 cur.next = prev
+                 break   
+             
+         
+
+             
+                      
                    
 
   
 
 if __name__ == '__main__':
-    '''
+    
     l1=linkedlist(1)
     l1.addnode(2)
+    l1.display()
     l1.addnode(3)
-    #l1.addnode(4)
-    #l1.addnode(5)
+    l1.addnode(4)
+    l1.addnode(5)
     #l1.display()
     #l1.addnext(2,2.5)       
     #l1.display() 
+    '''
     print " poping"
-    l1.pop();l1.display();l1.pop()
+    l1.pop();
+    l1.display();
+    l1.pop()
     
     print "list after pop" 
     l1.display()
+    '''
+    
+    print "Reversing the linkedlist"
+    l1.reverse()
+    print "List shall get reverse"
+    l1.display()
+
     
     
     round_l="("
@@ -116,7 +166,7 @@ if __name__ == '__main__':
                 break
     if parse_control.isempty() : print "Success"
     #else: print i+1        
-                 
+    '''             
              
     
               
