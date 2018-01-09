@@ -84,20 +84,20 @@ class linkedlist:
          cur= self.head
          prev=None
          next_node=cur.next
-         while cur:
+         while cur.next:
+             '''
              print "Cur is  {}".format(cur.data)
              try:
                  print "Prev is  {}".format(prev.data)
-             except: pass    
+             except: pass
+             '''    
              cur.next = prev
              prev=cur            
              cur = next_node
-             if cur.next:
-                next_node = cur.next
-             else:
-                 self.head = cur
-                 cur.next = prev
-                 break   
+             next_node = cur.next
+         cur.next = prev
+         self.head=cur
+         
              
          
 
@@ -112,9 +112,9 @@ if __name__ == '__main__':
     l1=linkedlist(1)
     l1.addnode(2)
     l1.display()
-    l1.addnode(3)
-    l1.addnode(4)
-    l1.addnode(5)
+    #l1.addnode(3)
+    #l1.addnode(4)
+    #l1.addnode(5)
     #l1.display()
     #l1.addnext(2,2.5)       
     #l1.display() 
@@ -131,6 +131,10 @@ if __name__ == '__main__':
     print "Reversing the linkedlist"
     l1.reverse()
     print "List shall get reverse"
+    l1.display()
+    l1.addnode(0)
+    l1.display()
+    l1.reverse()
     l1.display()
 
     
